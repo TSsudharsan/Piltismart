@@ -46,9 +46,9 @@ public class dateandtime {
         System.out.println("After Adding "+ asd + " Days:"+ pd.format(fdt));
         System.out.println("After Subtracting "+ asd + " Days:"+ md.format(fdt));
 
-       //4. Add and subtract 8 months from current date
+        //4. Add and subtract 8 months from current date
 
-       System.out.println("Enter the number of Month to Add and subtract");
+        System.out.println("Enter the number of Month to Add and subtract");
         int asm = s.nextInt();
         LocalDateTime pm =dt.plusMonths(asm);
         LocalDateTime mm =dt.minusMonths(asm);
@@ -57,34 +57,24 @@ public class dateandtime {
         System.out.println("After Subtracting "+ asm + " Months:"+ mm.format(fdt));
 
         //5 .Subtract a year from current date
+
         System.out.println("Enter the number of Year to  subtract");
         int sy = s.nextInt();
         LocalDateTime my =dt.minusYears(sy);
         System.out.println("Current Date : "+ dt.format(fdt));
         System.out.println("After Subtracting "+ sy + " years : "+ my.format(fdt));
 
-    //6.Convert current date in to Unix time format
+        //6.Convert current date in to Unix time format
 
         Date ux=new Date();
         Long p= ux.getTime()/1000;
         System.out.println(" Current date to Unix time format "+ p);
 
-   //7. Java static method to convert local time in to Unix time format 
+        //7. Java static method to convert local time in to Unix time format
+
         dateandtime obj=new dateandtime();
         dateandtime.f1();
-
-
-
-
-
-
-
-
-
-
         
-
- 
     }
 
 }
