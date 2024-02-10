@@ -1,22 +1,39 @@
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class dateandtime {
-    
+
    static  void f1()
     {
         Scanner sc=new Scanner(System.in);
         System.out.println("Enter unix time");
         Long unx=sc.nextLong();
         Date nux=new Date(unx*1000);
-        System.out.println(" Unix time format to Local time format "+ nux.toString());
+        SimpleDateFormat d=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a");
+        String d2=d.format(nux);
+        System.out.println(" Unix time format to Local time format "+ d2);
+    }
+    static Long f2 (String dd)
+    {
+        DateTimeFormatter fdt=DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        LocalDateTime dt=LocalDateTime.parse(dd, fdt);
+        return dt.toEpochSecond(ZoneOffset.UTC);  
     }
     public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter date and time (dd-MM-yyyy HH:mm:ss):");
+        String uInput = sc.nextLine();
+        Long unix=f2(uInput);
+        System.out.println(" Given date to Unix time format "+unix);
+    }
+    public static void main1(String[]args){
         Scanner s=new Scanner(System.in);
         LocalDateTime dt=LocalDateTime.now();
-        DateTimeFormatter fdt=DateTimeFormatter.ofPattern("dd-MM-yyyy hh:mm:ss a");
+        DateTimeFormatter fdt=DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss a");
         System.out.println("Current Time :"+ dt.format(fdt));
 
         //1.  Covert the time in to UTC time zone and US EST time zone.
@@ -68,11 +85,13 @@ public class dateandtime {
 
         Date ux=new Date();
         Long p= ux.getTime()/1000;
+        SimpleDateFormat d=new SimpleDateFormat("dd-MM-yyyy HH:mm:ss a");
+        System.out.println(" Current date  "+ d.format(ux));
         System.out.println(" Current date to Unix time format "+ p);
 
         //7. Java static method to convert local time in to Unix time format
 
-        dateandtime obj=new dateandtime();
+  
         dateandtime.f1();
         
     }
